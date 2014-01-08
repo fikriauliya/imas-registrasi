@@ -2,15 +2,38 @@ extends layout
 
 block head
   link(href='/stylesheets/sticky-footer.css', rel='stylesheet')
+  script(src="/javascripts/index.js")
+  style.
+    .search-input {
+      width: 400px;
+    }
+
 
 block content
-  #wrap
-    .container
+  #wrap(ng-app="myApp")
+    .container(ng-controller="IndexCtrl")
       .page-header
         h3
           | Registrasi Saung Istiqomah
-      p
-        | Form here
+      .row
+        p
+          input(type="text" ng-model="search" placeholder="Masukkan nama atau nomor hp anda di sini" class="search-input")
+
+      .row
+        table(class="table table-condensed table-striped table-hover")
+          thead
+            tr
+              th Nama
+              th Telepon
+              th Alamat
+          tbody
+            tr(ng-repeat="registrant in registrants | filter:search")
+              td
+                {{registrant.name}}
+              td
+                {{registrant.phone}}
+              td
+                {{registrant.address}}
   #footer
     .container
       p.text-muted &copy; Indonesian Muslim Association in Singapore, 2014
