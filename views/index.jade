@@ -2,11 +2,15 @@ extends layout
 
 block head
   link(href='/stylesheets/sticky-footer.css', rel='stylesheet')
+  link(href='/stylesheets/bootstrap-switch.min.css', rel='stylesheet')
   script.
     registrations = !{registrations};
-
+    $(function(){
+      $(".switch").bootstrapSwitch();
+    });
 
   script(src="/javascripts/index.js")
+  script(src="/javascripts/bootstrap-switch.min.js")
   style.
     .search-input {
       width: 400px;
@@ -30,6 +34,7 @@ block content
               th Nama
               th Email
               th Phone
+              th Hadir
           tbody
             tr(ng-repeat="registrant in registrants | filter:search")
               td
@@ -38,6 +43,8 @@ block content
                 {{registrant.email}}
               td
                 {{registrant.phone}}
+              td
+                input.switch(type="checkbox", checked=false, data-on-label="Hadir", data-off-label="Tidak")
   #footer
     .container
       p.text-muted &copy; Indonesian Muslim Association in Singapore, 2014
