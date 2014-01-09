@@ -2,6 +2,10 @@ extends layout
 
 block head
   link(href='/stylesheets/sticky-footer.css', rel='stylesheet')
+  script.
+    registrations = !{registrations};
+
+
   script(src="/javascripts/index.js")
   style.
     .search-input {
@@ -24,16 +28,16 @@ block content
           thead
             tr
               th Nama
-              th Telepon
-              th Alamat
+              th Email
+              th Phone
           tbody
             tr(ng-repeat="registrant in registrants | filter:search")
               td
                 {{registrant.name}}
               td
-                {{registrant.phone}}
+                {{registrant.email}}
               td
-                {{registrant.address}}
+                {{registrant.phone}}
   #footer
     .container
       p.text-muted &copy; Indonesian Muslim Association in Singapore, 2014
