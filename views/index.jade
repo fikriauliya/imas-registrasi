@@ -2,20 +2,19 @@ extends layout
 
 block head
   link(href='/stylesheets/sticky-footer.css', rel='stylesheet')
-  link(href='/stylesheets/bootstrap-switch.min.css', rel='stylesheet')
+  link(href='/stylesheets/angular-toggle-switch.css', rel='stylesheet')
+
+  script(src="/javascripts/angular-toggle-switch.min.js")
+
   script.
     registrations = !{registrations};
-    $(function(){
-      $(".switch").bootstrapSwitch();
-    });
-
+    
   script(src="/javascripts/index.js")
-  script(src="/javascripts/bootstrap-switch.min.js")
+
   style.
     .search-input {
       width: 400px;
     }
-
 
 block content
   #wrap(ng-app="myApp")
@@ -44,7 +43,8 @@ block content
               td
                 {{registrant.phone}}
               td
-                input.switch(type="checkbox", checked=false, data-on-label="Hadir", data-off-label="Tidak")
+                toggle-switch(model="switchStatus", on-label="Hadir", off-label="Tidak")
+                
   #footer
     .container
       p.text-muted &copy; Indonesian Muslim Association in Singapore, 2014

@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', []);
+var myApp = angular.module('myApp', ['toggle-switch']);
 
 myApp.factory('Registrants', function() {
   var registrants = registrations;
