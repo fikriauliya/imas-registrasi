@@ -23,10 +23,12 @@ block content
         h3
           | Registrasi Saung Istiqomah
       .row
-        p
-          input(type="text" ng-model="search" placeholder="Masukkan nama atau nomor hp anda di sini" class="search-input")
+        .col-xs-5
+          input(type="text" ng-model="search" placeholder="Masukkan nama atau nomor hp anda di sini" class="form-control")
+        .col-xs-5
+          a(ng-click="clear()", class="btn btn-danger") Clear
 
-      .row
+      .row(style="margin-top: 20px")
         table(class="table table-condensed table-striped table-hover")
           thead
             tr

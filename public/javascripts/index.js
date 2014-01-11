@@ -7,6 +7,7 @@ myApp.factory('Registrants', function() {
 
 function IndexCtrl($scope, $http, Registrants) {
   $scope.registrants = Registrants;
+  $scope.search = "";
 
   $scope.attending_changed = function(registrant) {
     console.log("attending_changed: " + registrant.name);
@@ -17,5 +18,9 @@ function IndexCtrl($scope, $http, Registrants) {
       error(function(data, status, headers, config){
         registrant.attending = !registrant.attending;
       });
-  }
+  };
+
+  $scope.clear = function() {
+    $scope.search = "";
+  };
 }
