@@ -35,7 +35,7 @@ block content
               th Phone
               th Hadir
           tbody
-            tr(ng-repeat="registrant in registrants | filter:search")
+            tr(ng-repeat="registrant in registrants | orderBy: ['name', 'email', 'phone'] | filter:search")
               td
                 {{registrant.name}}
               td
@@ -43,7 +43,7 @@ block content
               td
                 {{registrant.phone}}
               td
-                toggle-switch(model="switchStatus", on-label="Hadir", off-label="Tidak")
+                toggle-switch(model="registrant.attending", on-label="Hadir", off-label="Tidak", ng-click="attending_changed(registrant);")
                 
   #footer
     .container
