@@ -19,20 +19,22 @@ block head
 block content
   #wrap(ng-app="myApp")
     .container(ng-controller="IndexCtrl")
-      .page-header
+      .row
         h3
           | Registrasi Saung Istiqomah
+      hr
       .row
-        .col-xs-5
+        .col-xs-6
           input(type="text" ng-model="search" ng-change="search_changed()" placeholder="Masukkan nama atau nomor hp anda di sini" class="form-control")
-        .col-xs-5
-          a(ng-click="clear()", class="btn btn-default") Show all
+        .col-xs-4
         .col-xs-2
           div(style="float:right;")
             | {{filtered_registrants.length}} results
 
-      .row(style="margin-top: 20px")
-        table(class="table table-condensed table-striped table-hover", ng-switch on="filtered_registrants.length")
+      .row(style="margin-top: 20px", ng-switch on="filtered_registrants.length")
+        .alert.alert-success(ng-switch-when="0")
+          | Nama Anda belum terdaftar, silakan isi biodata Anda berikut:
+        table(class="table table-condensed table-striped table-hover")
           thead
             tr
               th Nama
@@ -51,13 +53,13 @@ block content
                 toggle-switch(model="registrant.attending", on-label="Hadir", off-label="Tidak", ng-click="attending_changed(registrant);")
             tr(ng-switch-when="0")
               td
-                input(ng-model="new_name", placeholder="Nama Anda", style="width:100%")
+                input(ng-model="new_name", style="width:100%", class="form-control input-sm")
               td
-                input(ng-model="new_email", placeholder="Email Anda", style="width:100%")
+                input(ng-model="new_email", style="width:100%", class="form-control input-sm")
               td
-                input(ng-model="new_phone", placeholder="Phone Anda", style="width:100%")
+                input(ng-model="new_phone", style="width:100%", class="form-control input-sm")
               td
-                a.btn.btn-primary(ng-click="create(new_name, new_email, new_phone)") Tambahkan
+                a.btn.btn-primary(ng-click="create(new_name, new_email, new_phone)") Submit
   #footer
     .container
       p.text-muted &copy; Indonesian Muslim Association in Singapore, 2014

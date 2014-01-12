@@ -14,6 +14,7 @@ function IndexCtrl($scope, $http, Registrants) {
     $http.put("update", registrant)
       .success(function(data, status, headers, config){
         registrant.attending = data.new_value;
+        $scope.search = "";
       }).
       error(function(data, status, headers, config){
         registrant.attending = !registrant.attending;
