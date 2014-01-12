@@ -34,7 +34,7 @@ block content
         .col-xs-4
         .col-xs-2
           div(style="float:right;")
-            | {{filtered_registrants.length}} results
+            | {{(registrants | filter:{attending: true}).length}} / {{filtered_registrants.length}} attending
 
       .row(style="margin-top: 20px", ng-switch on="filtered_registrants.length")
         .alert.alert-success(ng-switch-when="0")
