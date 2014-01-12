@@ -17,10 +17,31 @@ function IndexCtrl($scope, $http, Registrants) {
       }).
       error(function(data, status, headers, config){
         registrant.attending = !registrant.attending;
+        alert("Error");
       });
   };
 
   $scope.clear = function() {
     $scope.search = "";
+  };
+
+  $scope.create = function(new_name, new_email, new_phone) {
+    console.log("New registrant: " + new_name + " | " + new_email + " | " + new_phone);
+    var new_registrant = {
+      name: new_name,
+      email: new_email,
+      phone: new_phone
+    }
+    $http.post("create", new_registrant)
+      .success(function(data, status, headers, config){
+        if (data.status == "created"){
+          $scope.registrants.push(data.doc);
+        } else {
+          alert("Error");
+        }
+      }).
+      error(function(data, status, headers, config){
+        alert("Error");
+      });
   };
 }

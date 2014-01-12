@@ -30,3 +30,21 @@ exports.update = function(req, res){
     res.send(JSON.stringify(ret));
   });
 };
+
+exports.create = function(req, res){
+  new_attendant = {
+    name: req.body.name,
+    email: req.body.email,
+    phone: req.body.phone,
+    attending: true
+  }
+  Registration.create(new_attendant, function(err, doc){
+    ret = {};
+    if (err === null) { ret.status = "created"; }
+    else { ret.status = "error"; }
+    ret.doc = doc;
+
+    res.contentType('json')
+    res.send(JSON.stringify(ret));
+  });
+}

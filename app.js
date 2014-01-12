@@ -38,6 +38,7 @@ db.once('open', function callback () {
 
   app.get('/', routes.index);
   app.put('/update', routes.update);
+  app.post('/create', routes.create);
   app.get('/users', user.list);
 
   http.createServer(app).listen(app.get('port'), function(){
