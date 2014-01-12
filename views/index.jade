@@ -16,6 +16,9 @@ block head
       width: 400px;
     }
 
+    table.fixed { table-layout:fixed; }
+    table.fixed td { overflow: hidden; }
+
 block content
   #wrap(ng-app="myApp")
     .container#index_ctrl(ng-controller="IndexCtrl")
@@ -34,7 +37,12 @@ block content
       .row(style="margin-top: 20px", ng-switch on="filtered_registrants.length")
         .alert.alert-success(ng-switch-when="0")
           | Nama Anda belum terdaftar, silakan isi biodata Anda berikut:
-        table(class="table table-condensed table-striped table-hover")
+        table(class="table table-condensed table-striped table-hover fixed")
+          colgroup
+            col(width="30%")
+            col(width="30%")
+            col(width="25%")
+            col(width="15%")
           thead
             tr
               th Nama
