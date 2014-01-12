@@ -44,4 +44,8 @@ function IndexCtrl($scope, $http, Registrants) {
         alert("Error");
       });
   };
+
+  $scope.search_changed = function() {
+    $scope.new_name = $scope.search;
+  }
 }
