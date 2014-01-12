@@ -76,6 +76,7 @@ block content
                 toggle-switch(model="registrant.attending", on-label="Hadir", off-label="Tidak", ng-click="attending_changed(registrant);")
             tr(ng-switch-when="0")
               td
+              td
                 input(ng-model="new_name", style="width:100%", class="form-control input-sm")
               td
                 input(ng-model="new_email", style="width:100%", class="form-control input-sm")
