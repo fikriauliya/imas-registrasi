@@ -48,7 +48,9 @@ block content
               th Nama
               th Email
               th Phone
-              th
+              th(ng-switch-when="0")
+              th(ng-switch-default)
+                | Hadir?
           tbody
             tr(ng-repeat="registrant in filtered_registrants = (registrants | orderBy: ['name', 'email', 'phone'] | filter:search)")
               td
