@@ -19,7 +19,13 @@ exports.index = function(req, res){
 };
 
 exports.update = function(req, res){
-  Registration.update({_id: req.body._id}, {attending: req.body.attending}, function (err, numberAffected, raw){
+  new_registration = {
+    name: req.body.name,
+    email: req.body.email,
+    phone: req.body.phone,
+    attending: req.body.attending
+  }
+  Registration.update({_id: req.body._id}, new_registration, function (err, numberAffected, raw){
     ret = {};
     if (err === null) { ret.status = "updated";} 
     else { ret.status = "error"; }

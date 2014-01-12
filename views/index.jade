@@ -39,12 +39,14 @@ block content
           | Nama Anda belum terdaftar, silakan isi biodata Anda berikut:
         table(class="table table-condensed table-striped table-hover fixed")
           colgroup
+            col(width="7%")
             col(width="30%")
             col(width="30%")
             col(width="25%")
-            col(width="15%")
+            col(width="13%")
           thead
             tr
+              th
               th Nama
               th Email
               th Phone
@@ -52,14 +54,25 @@ block content
               th(ng-switch-default)
                 | Hadir?
           tbody
-            tr(ng-repeat="registrant in filtered_registrants = (registrants | orderBy: ['name', 'email', 'phone'] | filter:search)")
-              td
+            tr(ng-repeat="registrant in filtered_registrants = (registrants | orderBy: ['name', 'email', 'phone'] | filter:search)", ng-switch on="registrant.state")
+              td(ng-switch-when="edit")
+                a.btn.btn-warning.btn-xs(ng-click="update(registrant)") Update
+              td(ng-switch-when="edit")
+                input(ng-model="registrant.name", style="width:100%", class="form-control input-sm")
+              td(ng-switch-when="edit")
+                input(ng-model="registrant.email", style="width:100%", class="form-control input-sm")
+              td(ng-switch-when="edit")
+                input(ng-model="registrant.phone", style="width:100%", class="form-control input-sm")
+
+              td(ng-switch-default)
+                a.btn.btn-danger.btn-xs(ng-click="edit(registrant)") Edit
+              td(ng-switch-default)
                 {{registrant.name}}
-              td
+              td(ng-switch-default)
                 {{registrant.email}}
-              td
+              td(ng-switch-default)
                 {{registrant.phone}}
-              td
+              td(ng-switch-default)
                 toggle-switch(model="registrant.attending", on-label="Hadir", off-label="Tidak", ng-click="attending_changed(registrant);")
             tr(ng-switch-when="0")
               td

@@ -47,6 +47,21 @@ function IndexCtrl($scope, $http, Registrants) {
       });
   };
 
+  $scope.edit = function(registrant){
+    registrant.state = "edit";
+  }
+
+  $scope.update = function(registrant){
+    $http.put("update", registrant)
+      .success(function(data, status, headers, config){
+        console.log("Updated!");
+        registrant.state = "normal";
+      }).
+      error(function(data, status, headers, config){
+        alert("Error");
+      });
+  }
+
   $scope.search_changed = function() {
     $scope.new_name = $scope.search;
   }
