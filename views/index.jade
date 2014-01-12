@@ -25,9 +25,11 @@ block content
       .row
         h3
           | Registrasi Saung Istiqomah
-      hr
+        hr
       .row
-        .col-xs-6
+        .col-xs-1
+          label(style="margin-top:10px") Search
+        .col-xs-5
           input(type="text" ng-model="search" ng-change="search_changed()" placeholder="Masukkan nama atau nomor hp anda di sini" class="form-control")
         .col-xs-4
         .col-xs-2
