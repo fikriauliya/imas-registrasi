@@ -8,7 +8,7 @@ block head
 
   script.
     registrations = !{registrations};
-    
+
   script(src="/javascripts/index.js")
 
   style.
@@ -18,7 +18,7 @@ block head
 
 block content
   #wrap(ng-app="myApp")
-    .container(ng-controller="IndexCtrl")
+    .container#index_ctrl(ng-controller="IndexCtrl")
       .row
         h3
           | Registrasi Saung Istiqomah
@@ -63,3 +63,11 @@ block content
   #footer
     .container
       p.text-muted &copy; Indonesian Muslim Association in Singapore, 2014
+
+  #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+    .modal-dialog
+      .modal-content
+        .modal-body
+          .alert.alert-success
+            | Terimakasih telah melakukan registrasi 
+            span.glyphicon.glyphicon-ok

@@ -14,7 +14,7 @@ function IndexCtrl($scope, $http, Registrants) {
     $http.put("update", registrant)
       .success(function(data, status, headers, config){
         registrant.attending = data.new_value;
-        $scope.search = "";
+        $("#myModal").modal("show");
       }).
       error(function(data, status, headers, config){
         registrant.attending = !registrant.attending;
@@ -36,6 +36,7 @@ function IndexCtrl($scope, $http, Registrants) {
     $http.post("create", new_registrant)
       .success(function(data, status, headers, config){
         if (data.status == "created"){
+          $("#myModal").modal("show");
           $scope.registrants.push(data.doc);
         } else {
           alert("Error");
@@ -49,4 +50,16 @@ function IndexCtrl($scope, $http, Registrants) {
   $scope.search_changed = function() {
     $scope.new_name = $scope.search;
   }
+
+  var myModal = $('#myModal').on('shown.bs.modal', function () {
+      clearTimeout(myModal.data('hideInteval'))
+      var id = setTimeout(function(){
+        myModal.modal('hide');
+        scope = angular.element($("#index_ctrl")).scope();
+        scope.$apply(function() {
+          scope.search = "";
+        });
+      }, 1000);
+      myModal.data('hideInteval', id);
+  });
 }
