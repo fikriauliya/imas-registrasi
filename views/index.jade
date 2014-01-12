@@ -26,7 +26,10 @@ block content
         .col-xs-5
           input(type="text" ng-model="search" placeholder="Masukkan nama atau nomor hp anda di sini" class="form-control")
         .col-xs-5
-          a(ng-click="clear()", class="btn btn-danger") Clear
+          a(ng-click="clear()", class="btn btn-default") Show all
+        .col-xs-2
+          div(style="float:right;")
+            | {{filtered_registrants.length}} results
 
       .row(style="margin-top: 20px")
         table(class="table table-condensed table-striped table-hover")
@@ -37,7 +40,7 @@ block content
               th Phone
               th Hadir
           tbody
-            tr(ng-repeat="registrant in registrants | orderBy: ['name', 'email', 'phone'] | filter:search")
+            tr(ng-repeat="registrant in filtered_registrants = (registrants | orderBy: ['name', 'email', 'phone'] | filter:search)")
               td
                 {{registrant.name}}
               td
