@@ -18,7 +18,7 @@ function IndexCtrl($scope, $http, Registrants) {
       }).
       error(function(data, status, headers, config){
         registrant.attending = !registrant.attending;
-        alert("Error");
+        alert("Maaf, koneksi Internet terputus. Data Anda belum terupdate")
       });
   };
 
@@ -39,11 +39,11 @@ function IndexCtrl($scope, $http, Registrants) {
           $("#myModal").modal("show");
           $scope.registrants.push(data.doc);
         } else {
-          alert("Error");
+          alert("Maaf, koneksi Internet terputus. Data Anda belum terupdate")
         }
       }).
       error(function(data, status, headers, config){
-        alert("Error");
+        alert("Maaf, koneksi Internet terputus. Data Anda belum terupdate")
       });
   };
 
@@ -58,7 +58,7 @@ function IndexCtrl($scope, $http, Registrants) {
         registrant.state = "normal";
       }).
       error(function(data, status, headers, config){
-        alert("Error");
+        alert("Maaf, koneksi Internet terputus. Data Anda belum terupdate")
       });
   }
 
